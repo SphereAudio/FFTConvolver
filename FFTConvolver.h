@@ -72,6 +72,8 @@ public:
   * @param len Number of input/output samples
   */
   void process(const Sample* input, Sample* output, size_t len);
+    
+  void updateIRKeepingLength(const Sample* ir);
 
   /**
   * @brief Resets the convolver and discards the set impulse response
@@ -82,6 +84,7 @@ private:
   size_t _blockSize;
   size_t _segSize;
   size_t _segCount;
+  size_t _irLength;
   size_t _fftComplexSize;
   std::vector<SplitComplex*> _segments;
   std::vector<SplitComplex*> _segmentsIR;

@@ -101,6 +101,8 @@ bool FFTConvolver::init(size_t blockSize, const Sample* ir, size_t irLen)
   {
     return true;
   }
+    
+  _irLength = irLen;
   
   _blockSize = NextPowerOf2(blockSize);
   _segSize = 2 * _blockSize;
@@ -141,6 +143,23 @@ bool FFTConvolver::init(size_t blockSize, const Sample* ir, size_t irLen)
   _current = 0;
   
   return true;
+}
+
+void FFTConvolver::updateIRKeepingLength(const Sample* ir)
+{
+    // Prepare IR
+    for (size_t i=0; i<_segCount; ++i)
+    {
+      const size_t remaining = _irLength - (i * _blockSize);
+      const size_t sizeCopy = (remaining >= _blockSize) ? _blockSize : remaining;
+      CopyAndPad(_fftBuffer, &ir[i*_blockSize], sizeCopy);
+      _fft.fft(_fftBuffer.data(), _segmentsIR.at(i)->re(), _segmentsIR.at(i)->im());
+    }
+    
+    _inputBufferFill = 0;
+    
+    // Reset current position
+    _current = 0;
 }
 
 
