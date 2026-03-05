@@ -1,2 +1,4 @@
 *.exe
 *.xcodeproj
+build/
+.DS_Store
