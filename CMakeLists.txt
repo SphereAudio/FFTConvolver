@@ -7,14 +7,15 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_library(${PROJECT_NAME} "")
 
 target_sources(${PROJECT_NAME} PRIVATE
-    AudioFFT.cpp
     AudioFFT.h
-    FFTConvolver.cpp
     FFTConvolver.h
-    TwoStageFFTConvolver.cpp
     TwoStageFFTConvolver.h
-    Utilities.cpp
     Utilities.h
+    
+    AudioFFT.cpp
+    FFTConvolver.cpp
+    TwoStageFFTConvolver.cpp
+    Utilities.cpp
 )
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_LIST_DIR})

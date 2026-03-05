@@ -67,7 +67,7 @@ class Buffer
 {
 public:  
   explicit Buffer(size_t initialSize = 0) :
-    _data(0),
+    _data(nullptr),
     _size(0)
   {
     resize(initialSize);
@@ -81,7 +81,7 @@ public:
   void clear()
   {
     deallocate(_data);
-    _data = 0;
+    _data = nullptr;
     _size = 0;
   }
 
