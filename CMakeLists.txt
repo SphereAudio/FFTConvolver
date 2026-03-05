@@ -1,7 +1,12 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.16)
 project(fftconvolver)
 
-set(LIBRARY_SOURCE
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+add_library(${PROJECT_NAME} "")
+
+target_sources(${PROJECT_NAME} PRIVATE
     src/AudioFFT.cpp
     src/AudioFFT.h
     src/FFTConvolver.cpp
@@ -12,4 +17,4 @@ set(LIBRARY_SOURCE
     src/Utilities.h
 )
 
-add_library(fftconvolver ${LIBRARY_SOURCE})
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_LIST_DIR})
