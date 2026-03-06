@@ -25,8 +25,6 @@
 #include <cmath>
 #include <cstring>
 
-#define AUDIOFFT_APPLE_ACCELERATE
-
 #if defined(AUDIOFFT_APPLE_ACCELERATE)
   #define AUDIOFFT_APPLE_ACCELERATE_USED
   #include <Accelerate/Accelerate.h>
